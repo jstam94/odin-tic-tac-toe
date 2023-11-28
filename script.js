@@ -1,4 +1,3 @@
-function Player(name, marker) {
-    this.name = name;
-    this.marker = marker;
-  }
+ function createPlayer(name, marker){
+    return {name, marker};
+ }
