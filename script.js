@@ -1,18 +1,34 @@
-let ticTacToe ={
-    players: [],
-    playerSelection : function(){
-        function createPlayer(name, marker){
+// let players ={
+//     players: [],
+//     playerSelection : function(){
+//         function createPlayer(name, marker){
+//             return {name, marker};
+//         }
+//         let playerOneName = 'playerX';
+//         let markerChoice = 'X';
+//         let playerTwoName = 'playerO'
+//         let remainingMarker;
+//         markerChoice === 'X'? remainingMarker = 'O': remainingMarker = 'O';
+//         this.players.push(createPlayer(playerOneName, markerChoice));
+//         this.players.push(createPlayer(playerTwoName, remainingMarker));
+//     }
+// }
+
+
+let players = (function(){
+    let players = [];
+    let playerSelection = function(playerOneName = 'Player 1', playerTwoName = 'Player 2'){
+        createPlayer = (name, marker) =>{
             return {name, marker};
         }
-        let playerOneName = 'playerX';
-        let markerChoice = 'X';
-        let playerTwoName = 'playerO'
-        let remainingMarker;
-        markerChoice === 'X'? remainingMarker = 'O': remainingMarker = 'O';
-        this.players.push(createPlayer(playerOneName, markerChoice));
-        this.players.push(createPlayer(playerTwoName, remainingMarker));
+    players.push(createPlayer(playerOneName, 'X'));
+    players.push(createPlayer(playerTwoName, 'O'));
     }
-}
+
+
+    let getPlayers = () => players;
+    return{getPlayers, playerSelection}
+})()
 
 
 
