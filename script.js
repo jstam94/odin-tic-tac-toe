@@ -14,25 +14,25 @@ let ticTacToe ={
     }
 }
 
-function cell() {
-    let value = null;
-    const markHere = (currentPlayer) => {
-        value = currentPlayer.markerChoice;
-    };
-    const getValue = () => value;
-    return {
-        markHere,
-        getValue
-}
-}
-
 
 
 gameBoard = (function(){
     const rows = 3;
     const columns = 3;
     const board = [];
-
+    function cell() {
+        let value = null;
+        const markHere = (currentPlayer) => {
+            value = currentPlayer.markerChoice;
+        };
+        const getValue = () => value;
+        return {
+            markHere,
+            getValue
+    }
+    }
+    
+    
     for (let i = 0; i < rows; i++) {
         board[i] = [];
         for (let j = 0; j < columns; j++) {
