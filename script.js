@@ -13,3 +13,15 @@ let ticTacToe ={
         this.players.push(createPlayer(playerTwoName, remainingMarker));
     }
 }
+
+function cell() {
+    let value = null;
+    const markHere = (currentPlayer) => {
+        value = currentPlayer.markerChoice;
+    };
+    const getValue = () => value;
+    return {
+        markHere,
+        getValue
+}
+}
