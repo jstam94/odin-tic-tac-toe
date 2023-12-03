@@ -16,18 +16,19 @@ let players = (function(){
 
 
 
-gameBoard = (function(){
+gameController = (function(){
+  gameBoard = (function(){
     const rows = 3;
     const columns = 3;
     const board = [];
     function cell() {
         let value = null;
-        const markHere = (currentPlayer) => {
-            value = currentPlayer.markerChoice;
+        const mark = () => {
+            value = gameController.getCurrentPlayer().marker;
         };
         const getValue = () => value;
         return {
-            markHere,
+            mark,
             getValue
     }
     }
@@ -41,11 +42,22 @@ gameBoard = (function(){
       }
       const getBoard = () => board;
       const markHere = (position) => {
-        position.markHere();
+        position.mark();
       }
       const printBoard = () => {
         const boardWithCellValues = board.map((row) => row.map((cell) => cell.getValue()))
         console.log(boardWithCellValues);
       };
-      return { getBoard, markHere, printBoard }
+      return {board, markHere, printBoard }
 })();
+
+  players.playerSelection();
+  let currentPlayer = players.getPlayers()[0];
+  let getCurrentPlayer = () => currentPlayer;
+
+  function playRound(position){
+    gameBoard.markHere(position);
+  }
+  
+  return {playRound, getCurrentPlayer, gameBoard}
+})()
