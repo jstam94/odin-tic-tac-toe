@@ -56,12 +56,15 @@ gameController = (function(){
   let getCurrentPlayer = () => currentPlayer;
   let switchPlayer = () => (currentPlayer == players.getPlayers()[0] ? currentPlayer = players.getPlayers()[1] : currentPlayer = players.getPlayers()[0])
   function playRound(position){
+    if(position.getValue()){ 
+      return
+    };
     gameBoard.markHere(position);
-    console.log('TEST')
+    // checkForWin(currentPlayer);
     switchPlayer()
   }
   
-  return {playRound, getCurrentPlayer, gameBoard, switchPlayer}
+  return {playRound, getCurrentPlayer, gameBoard}
 })()
 
 
