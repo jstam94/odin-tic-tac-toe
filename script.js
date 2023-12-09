@@ -58,13 +58,14 @@ gameController = (function(){
   function checkForWin(){
     let isWin = false;
     let currentMarker = gameController.getCurrentPlayer().marker
+    let board = gameController.gameBoard.board;
     console.log('Running Check for Win!!!!')
     checkRows();
     checkColumns();
     checkDiagonals();
     function checkRows(){
       console.log('Checking Rows')
-      gameController.gameBoard.board.forEach(row => {
+      board.forEach(row => {
         if (row[0].getValue() === currentMarker && row[1].getValue() === currentMarker  && row[1].getValue() === currentMarker){
           isWin = true
         } else return;
@@ -73,7 +74,6 @@ gameController = (function(){
     }
     function checkColumns(){
       console.log('Checking Columns')
-      let board = gameController.gameBoard.board;
       if(board[0][0].getValue() === currentMarker && board[1][0].getValue() === currentMarker && board[2][0].getValue() === currentMarker){
         isWin = true;
       } else if(board[0][1].getValue() === currentMarker && board[1][1].getValue() === currentMarker && board[2][1].getValue() === currentMarker){
@@ -83,7 +83,11 @@ gameController = (function(){
       } else return;
       } ;
     function checkDiagonals(){
-      console.log('Checking Diagonals')
+      if(board[0][0].getValue() === currentMarker && board[1][1].getValue() === currentMarker && board[2][2].getValue() === currentMarker){
+        isWin = true;
+      } else if(board[0][2].getValue() === currentMarker && board[1][1].getValue() === currentMarker && board[2][0].getValue() === currentMarker){
+        isWin = true; 
+      } else return;
     }
     isWin ? console.log(`Player ${gameController.getCurrentPlayer().marker} Wins`) : console.log('No Winner Yet')
   }
@@ -104,11 +108,11 @@ gameController = (function(){
 
 // let test = gameController.gameBoard.board[0][0]
 
-gameController.playRound(gameController.gameBoard.board[0][0])
+gameController.playRound(gameController.gameBoard.board[0][2])
 gameController.playRound(gameController.gameBoard.board[0][1])
-gameController.playRound(gameController.gameBoard.board[1][0])
 gameController.playRound(gameController.gameBoard.board[1][1])
-gameController.playRound(gameController.gameBoard.board[2][2])
-gameController.playRound(gameController.gameBoard.board[2][1])
+gameController.playRound(gameController.gameBoard.board[0][0])
+gameController.playRound(gameController.gameBoard.board[2][0])
+
 
 gameController.gameBoard.printBoard()
