@@ -73,7 +73,15 @@ gameController = (function(){
     }
     function checkColumns(){
       console.log('Checking Columns')
-    }
+      let board = gameController.gameBoard.board;
+      if(board[0][0].getValue() === currentMarker && board[1][0].getValue() === currentMarker && board[2][0].getValue() === currentMarker){
+        isWin = true;
+      } else if(board[0][1].getValue() === currentMarker && board[1][1].getValue() === currentMarker && board[2][1].getValue() === currentMarker){
+        isWin = true;
+      } else if(board[0][2].getValue() === currentMarker && board[1][2].getValue() === currentMarker && board[2][2].getValue() === currentMarker){
+        isWin = true
+      } else return;
+      } ;
     function checkDiagonals(){
       console.log('Checking Diagonals')
     }
@@ -96,11 +104,11 @@ gameController = (function(){
 
 // let test = gameController.gameBoard.board[0][0]
 
-gameController.playRound(gameController.gameBoard.board[0][2])
-gameController.playRound(gameController.gameBoard.board[2][0])
+gameController.playRound(gameController.gameBoard.board[0][0])
+gameController.playRound(gameController.gameBoard.board[0][1])
 gameController.playRound(gameController.gameBoard.board[1][0])
-gameController.playRound(gameController.gameBoard.board[2][1])
 gameController.playRound(gameController.gameBoard.board[1][1])
 gameController.playRound(gameController.gameBoard.board[2][2])
+gameController.playRound(gameController.gameBoard.board[2][1])
 
 gameController.gameBoard.printBoard()
