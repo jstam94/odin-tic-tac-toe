@@ -54,13 +54,39 @@ gameController = (function(){
   players.playerSelection();
   let currentPlayer = players.getPlayers()[0];
   let getCurrentPlayer = () => currentPlayer;
-  let switchPlayer = () => (currentPlayer == players.getPlayers()[0] ? currentPlayer = players.getPlayers()[1] : currentPlayer = players.getPlayers()[0])
+  let switchPlayer = () => (currentPlayer == players.getPlayers()[0] ? currentPlayer = players.getPlayers()[1] : currentPlayer = players.getPlayers()[0]);
+  function checkForWin(){
+    let isWin = false;
+    let currentMarker = gameController.getCurrentPlayer().marker
+    console.log('Running Check for Win!!!!')
+    checkRows();
+    checkColumns();
+    checkDiagonals();
+    function checkRows(){
+      console.log('Checking Rows')
+      gameController.gameBoard.board.forEach(row => {
+        if (row[0].getValue() === currentMarker && row[1].getValue() === currentMarker  && row[1].getValue() === currentMarker){
+          isWin = true
+        } else return;
+      });
+
+    }
+    function checkColumns(){
+      console.log('Checking Columns')
+    }
+    function checkDiagonals(){
+      console.log('Checking Diagonals')
+    }
+    isWin ? console.log(`Player ${gameController.getCurrentPlayer().marker} Wins`) : console.log('No Winner Yet')
+  }
+
   function playRound(position){
     if(position.getValue()){ 
       return
     };
+
     gameBoard.markHere(position);
-    // checkForWin(currentPlayer);
+    checkForWin();
     switchPlayer()
   }
   
@@ -70,4 +96,11 @@ gameController = (function(){
 
 // let test = gameController.gameBoard.board[0][0]
 
-// gameController.playRound(gameController.gameBoard.board[0][0])
+gameController.playRound(gameController.gameBoard.board[0][2])
+gameController.playRound(gameController.gameBoard.board[2][0])
+gameController.playRound(gameController.gameBoard.board[1][0])
+gameController.playRound(gameController.gameBoard.board[2][1])
+gameController.playRound(gameController.gameBoard.board[1][1])
+gameController.playRound(gameController.gameBoard.board[2][2])
+
+gameController.gameBoard.printBoard()
