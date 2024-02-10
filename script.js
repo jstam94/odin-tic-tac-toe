@@ -128,5 +128,7 @@ function screenController(){
   })
 }
 
-screenController()
+let start = document.querySelector('#start-game');
+start.addEventListener('click', () => screenController())
+
 
