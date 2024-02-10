@@ -5,14 +5,26 @@ let players = (function(){
         createPlayer = (name, marker) =>{
             return {name, marker};
         }
-      players.push(createPlayer(playerOneName, 'X'));
-      players.push(createPlayer(playerTwoName, 'O'));
+      players[0] = (createPlayer(playerOneName, 'X'));
+      players[1] = (createPlayer(playerTwoName, 'O'));
     }
 
 
     let getPlayers = () => players;
     return{getPlayers, playerSelection}
 })()
+
+let start = document.querySelector('#start-game');
+let playerOneInput = document.querySelector('#playerOne')
+let playerTwoInput = document.querySelector('#playerTwo')
+
+start.addEventListener('click', () => {
+  players.playerSelection(playerOneInput.value, playerTwoInput.value);
+  screenController();
+})
+
+
+
 
 
 
@@ -105,13 +117,12 @@ gameController = (function(){
   return {playRound, getCurrentPlayer, gameBoard}
 })()
 
+function renderCurrentPlayer(){
+  let playerScreen = document.querySelector('#currentPlayer');
+playerScreen.textContent = `It is ${gameController.getCurrentPlayer().name}'s turn`
+}
 
 function screenController(){
-
-  function renderCurrentPlayer(){
-    let playerScreen = document.querySelector('#currentPlayer');
-  playerScreen.textContent = `It is ${gameController.getCurrentPlayer().name}'s turn`
-  }
   renderCurrentPlayer()
  cells = document.querySelectorAll('.cell')
  cells.forEach(cell => {
@@ -127,8 +138,4 @@ function screenController(){
   })
   })
 }
-
-let start = document.querySelector('#start-game');
-start.addEventListener('click', () => screenController())
-
 
