@@ -107,6 +107,8 @@ gameController = (function(){
 
 
 function screenController(){
+  let playerScreen = document.querySelector('#currentPlayer');
+  playerScreen.textContent = `It is ${gameController.getCurrentPlayer().name}'s turn`
  cells = document.querySelectorAll('.cell')
  cells.forEach(cell => {
   cell.addEventListener('click', () => {
