@@ -110,6 +110,9 @@ function screenController(){
  cells = document.querySelectorAll('.cell')
  cells.forEach(cell => {
   cell.addEventListener('click', () => {
+    if (cell.innerText ==''){
+      cell.innerText = gameController.getCurrentPlayer().marker;
+    }
     let id = cell.getAttribute('id').split('')
     let column = id[1];
     let row = id[4];
@@ -120,4 +123,3 @@ function screenController(){
 
 screenController()
 
-// gameController.playRound(gameController.gameBoard.board[0][2])
