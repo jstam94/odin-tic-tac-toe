@@ -107,8 +107,12 @@ gameController = (function(){
 
 
 function screenController(){
-  let playerScreen = document.querySelector('#currentPlayer');
+
+  function renderCurrentPlayer(){
+    let playerScreen = document.querySelector('#currentPlayer');
   playerScreen.textContent = `It is ${gameController.getCurrentPlayer().name}'s turn`
+  }
+  renderCurrentPlayer()
  cells = document.querySelectorAll('.cell')
  cells.forEach(cell => {
   cell.addEventListener('click', () => {
@@ -119,6 +123,7 @@ function screenController(){
     let column = id[1];
     let row = id[4];
     gameController.playRound(gameController.gameBoard.board[column][row])
+    renderCurrentPlayer()
   })
   })
 }
