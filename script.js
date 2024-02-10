@@ -5,8 +5,8 @@ let players = (function(){
         createPlayer = (name, marker) =>{
             return {name, marker};
         }
-    players.push(createPlayer(playerOneName, 'X'));
-    players.push(createPlayer(playerTwoName, 'O'));
+      players.push(createPlayer(playerOneName, 'X'));
+      players.push(createPlayer(playerTwoName, 'O'));
     }
 
 
@@ -106,13 +106,6 @@ gameController = (function(){
 })()
 
 
-// let test = gameController.gameBoard.board[0][0]
+screenController = (function(){
 
-gameController.playRound(gameController.gameBoard.board[0][2])
-gameController.playRound(gameController.gameBoard.board[0][1])
-gameController.playRound(gameController.gameBoard.board[1][1])
-gameController.playRound(gameController.gameBoard.board[0][0])
-gameController.playRound(gameController.gameBoard.board[2][0])
-
-
-gameController.gameBoard.printBoard()
+})()
