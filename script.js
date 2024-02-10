@@ -106,6 +106,18 @@ gameController = (function(){
 })()
 
 
-screenController = (function(){
+function screenController(){
+ cells = document.querySelectorAll('.cell')
+ cells.forEach(cell => {
+  cell.addEventListener('click', () => {
+    let id = cell.getAttribute('id').split('')
+    let column = id[1];
+    let row = id[4];
+    gameController.playRound(gameController.gameBoard.board[column][row])
+  })
+  })
+}
 
-})()
+screenController()
+
+// gameController.playRound(gameController.gameBoard.board[0][2])
